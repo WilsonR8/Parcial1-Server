@@ -1,5 +1,6 @@
 package main;
 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.net.Socket;
 
 import com.google.gson.Gson;
 
+import model.Color;
 import model.Coordenada;
 import model.Generic;
 import model.User;
@@ -91,6 +93,17 @@ public class TCPSingleton extends Thread{
 			observer.setCoord(posx,posy);
 			
 			break;
+			
+			
+			case "Color":
+				Color color = gson.fromJson(line, Color.class);
+				int rc = color.getR();
+				int gc = color.getG();
+				int bc = color.getB();
+				observer.setColor(rc, gc, bc);
+			
+			break; 
+			
 			}
 		
 		}
