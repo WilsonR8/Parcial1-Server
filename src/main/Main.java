@@ -35,7 +35,7 @@ public class Main extends PApplet {
 		}else {
 		ellipse(X,Y, 50, 50);
 		fill(255);
-		text(name, 50, 50);
+		text(name, X, Y-50);
 		
 	}
 	}

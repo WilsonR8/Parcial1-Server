@@ -71,27 +71,29 @@ public class TCPSingleton extends Thread{
 			System.out.println("Recibido:" + line);
 
 			Gson gson = new Gson();
-			//Generic generic = gson.fromJson(line, Generic.class);
+			Generic generic = gson.fromJson(line, Generic.class);
 			
 	
+			switch(generic.getType()) {
 			
-		if(line.contains("User")) {
+			case "User": 
 			User name = gson.fromJson(line, User.class);
 			String getName = name.getId();
 			observer.setName(getName);
-			}
-	
 			
-		if(line.contains("Coordenada")) {
+			break;
+			
+			case "Coordenada":
+				
 			Coordenada coordenada = gson.fromJson(line, Coordenada.class);
 			int posx=coordenada.getX();
 			int posy=coordenada.getY();
 			observer.setCoord(posx,posy);
 			
-	
+			break;
 			}
+		
 		}
-			
 			
 			
 			
